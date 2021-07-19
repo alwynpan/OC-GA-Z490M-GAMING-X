@@ -1,29 +1,36 @@
-[![](https://img.shields.io/badge/Gitter%20HL%20Community-Chat-informational?style=flat&logo=gitter&logoColor=white&color=ed1965)](https://gitter.im/Hackintosh-Life-IT/community)
-[![](https://img.shields.io/badge/Reposity-Baio77-informational?style=flat&logo=apple&logoColor=white&color=9debeb)](https://github.com/Baio1977?tab=repositories)
-[![](https://img.shields.io/badge/Telegram-HackintoshLifeIT-informational?style=flat&logo=telegram&logoColor=white&color=5fb659)](https://t.me/HackintoshLife_it)
-[![](https://img.shields.io/badge/Facebook-HackintoshLifeIT-informational?style=flat&logo=facebook&logoColor=white&color=3a4dc9)](https://www.facebook.com/hackintoshlife/)
-[![](https://img.shields.io/badge/Instagram-HackintoshLifeIT-informational?style=flat&logo=instagram&logoColor=white&color=8a178a)](https://www.instagram.com/hackintoshlife.it_official/)
+# Gigabyte GA-Z490M-GAMING-X based OpenCore Hackintosh
 
-# Computer Spec:
+## Credits
 
-| Component        | Brank                              |
-| ---------------- | ---------------------------------- |
-| Scheda Madre     | GA Z490M Gaming X (BIOS F20d)      | 
-| CPU              | Intel i5 10600                     | 
-| IGPU             | Intel® UHD Graphics 630            |
-| GPU              | Sapphire RX 590 Nitro+             |
-| Audio            | Realtek ALC1200A                   |
-| Ram              | 32 Gb DDR4 3200 Mhz                |
-| Wifi + Bluetooth | Fenvi FV - T919                    |
-| NVMe             | Samsung 980 Pro 512Gb              |
-| SmBios           | IMac 20.1                          |
-| BootLoader       | OpenCore 0.7.1 - Clover 5137       |
+This repo is based on [Baio1977/GA-Z490M-Gaming-X](https://github.com/Baio1977/GA-Z490M-Gaming-X). All credits to [Baio1977](https://github.com/Baio1977) and [hackintoshlife.it](https://www.hackintoshlife.it/).
+
+- [Acidanthera](https://github.com/acidanthera) for OpenCore and all the lovely hackintosh work.
+- [Apple](https://apple.com) for macOS;
+- [daliansky](https://github.com/daliansky)
+- [Dortiana](https://github.com/dortania)
+- [Hackintoshlifeit](https://github.com/Hackintoshlifeit)
+- [mald0n](https://github.com/MaLd0n)
+- [rehabman](https://github.com/RehabMan)
+
+## Computer Specs
+
+| Component        | Brand and model                       |
+| ---------------- | ------------------------------------- |
+| Motherboard      | GA Z490M Gaming X (rev 1.0, BIOS F20) |
+| CPU              | Intel i7 10700K                       |
+| GPU              | Intel® UHD Graphics 630               |
+| Audio            | Realtek ALC1200A                      |
+| Ram              | Team 32Gb DDR4 3600Mhz                |
+| WiFi + Bluetooth | Fenvi FV-T919 (BCM94360CD)            |
+| NVMe             | Kingston A2000 500GB                  |
+| SmBios           | iMac 20.1                             |
+| BootLoader       | OpenCore 0.7.1                        |
 
 ![infodp1](./Screenshot/11.png)
 
-# Bios F20 Settings
+## BIOS Settings (F20)
 
-## Disable:
+### Disable
 
 - Fast Boot
 - VT-d (can be enabled if you set DisableIoMapper to YES)
@@ -32,29 +39,31 @@
 - Intel Platform Trust
 - CFG Lock (MSR 0xE2 write protection)
 
-## Enable:
+### Enable
 
 - VT-x
 - Above 4G decoding
 - Hyper-Threading
 - Execute Disable Bit
 - EHCI/XHCI Hand-off
-- OS type: (Windows 10 Feautres: Ohter)
+- OS type: (Windows 10 Features: Other)
 - DVMT Pre-Allocated(iGPU Memory): 128 MB
 - DVMT Total Gfx Mem → MAX
   
-# Device Screenshot
+## Device Screenshot
+
 ![infodp1](./Screenshot/4.png)
 ![infodp2](./Screenshot/5.png)
 
-# Patch IGPU HDMI\DP Output
-![infodp2](./Screenshot/12.jpg)
+## Patch iGPU HDMI\DP Output
+
 ![infodp2](./Screenshot/8.png)
 ![infodp2](./Screenshot/9.png)
 ![infodp2](./Screenshot/10.png)
 
 These are the device properties to configure the iGPU as display output:
-```
+
+``` plist
 <key>PciRoot(0x0)/Pci(0x2,0x0)</key>
 <dict>
     <key>AAPL,GfxYTile</key>
@@ -103,7 +112,8 @@ These are the device properties to configure the iGPU as display output:
 ```
 
 And these are the device properties to setup the iGPU as computing only:
-```
+
+``` plist
 <key>PciRoot(0x0)/Pci(0x2,0x0)</key>
 <dict>
     <key>AAPL,ig-platform-id</key>
@@ -118,17 +128,26 @@ And these are the device properties to setup the iGPU as computing only:
     <string>Intel CoffeeLake-H GT2 [UHD Graphics 630]</string>
 </dict>
 ```
-# What works and What doesn't or WIP:
+
+## What works and What doesn't or WIP
+
+### Works
+
 - [x] Intel UHD 630 iGPU
 - [x] ALC1200 Internal Speakers
 - [x] ALC1200 HDMI Audio Output
-- [x] All USB Ports 
+- [x] All USB Ports (Front 30 pin connector at USB2 speed)
 - [x] Wi-Fi and Bluetooth BCM94360CS2 Module
 - [x] Intel (11)I219-V LAN
 - [x] NVRAM
 - [x] Windows boot from OpenCore
 
-# USB Map by Hackintool
+### Does't work
+
+- [ ] USB Wake-up
+
+## USB Map by Hackintool
+
 - Usb port mapping performed
 
 ![infobigsur](./Screenshot/3.png)
@@ -138,18 +157,6 @@ And these are the device properties to setup the iGPU as computing only:
 
 ![PCI](./Screenshot/7.png)
 
-# Info Section SSDT GA Z490M Gaming X
+## Info Section SSDT GA Z490M Gaming X
 
 ![SSDT](./Screenshot/6.png)
-
-## Credits
-
-- [Acidanthera](https://github.com/acidanthera) for OpenCore and all the lovely hackintosh work.
-- [Apple](https://apple.com) for macOS;
-- [daliansky](https://github.com/daliansky)
-- [Dortiana](https://github.com/dortania)
-- [Hackintoshlifeit](https://github.com/Hackintoshlifeit)
-- [mald0n](https://github.com/MaLd0n)
-- [rehabman](https://github.com/RehabMan)
-
-# If you need help please contact us on [Telegram](https://t.me/HackintoshLife_it) or [Web](https://www.hackintoshlife.it/)
