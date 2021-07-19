@@ -63,7 +63,7 @@ This repo is based on [Baio1977/GA-Z490M-Gaming-X](https://github.com/Baio1977/G
 
 These are the device properties to configure the iGPU as display output:
 
-``` plist
+``` xml
 <key>PciRoot(0x0)/Pci(0x2,0x0)</key>
 <dict>
     <key>AAPL,GfxYTile</key>
@@ -77,6 +77,8 @@ These are the device properties to configure the iGPU as display output:
     <key>device_type</key>
     <string>VGA compatible controller</string>
     <key>enable-hdmi-dividers-fix</key>
+    <data>AQAAAA==</data>
+    <key>force-online</key>
     <data>AQAAAA==</data>
     <key>framebuffer-con0-busid</key>
     <data>AQAAAA==</data>
@@ -113,7 +115,7 @@ These are the device properties to configure the iGPU as display output:
 
 And these are the device properties to setup the iGPU as computing only:
 
-``` plist
+``` xml
 <key>PciRoot(0x0)/Pci(0x2,0x0)</key>
 <dict>
     <key>AAPL,ig-platform-id</key>
